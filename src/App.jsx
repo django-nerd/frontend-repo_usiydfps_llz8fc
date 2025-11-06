@@ -1,20 +1,29 @@
 import Hero from './components/Hero'
 import About from './components/About'
-import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 
 function App() {
   return (
     <div className="min-h-screen scroll-smooth bg-[#0b0b12]">
-      {/* Navbar */}
+      {/* Top Navigation */}
       <header className="fixed left-0 right-0 top-0 z-50 mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-b-2xl border border-white/10 bg-black/30 px-4 py-3 backdrop-blur-md">
         <a href="#home" className="bg-gradient-to-r from-indigo-200 via-white to-fuchsia-200 bg-clip-text text-sm font-semibold text-transparent">Karthik Vana</a>
-        <nav className="hidden items-center gap-5 text-xs text-white/70 sm:flex">
-          <a className="hover:text-white" href="#about">About</a>
-          <a className="hover:text-white" href="#skills">Skills</a>
-          <a className="hover:text-white" href="#projects">Projects</a>
-          <a className="hover:text-white" href="#contact">Contact</a>
+        <nav className="hidden items-center gap-1 text-xs sm:flex">
+          {[
+            { href: '#about', label: 'About' },
+            { href: '#projects', label: 'Projects' },
+            { href: '#contact', label: 'Contact' },
+          ].map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="relative rounded-full px-3 py-1.5 text-white/70 transition hover:text-white"
+            >
+              <span>{item.label}</span>
+              <span className="pointer-events-none absolute inset-x-2 -bottom-0.5 block h-px scale-x-0 bg-gradient-to-r from-fuchsia-400 via-indigo-400 to-cyan-300 opacity-80 transition will-change-transform group-hover:scale-x-100" />
+            </a>
+          ))}
         </nav>
         <a href="#contact" className="rounded-full bg-gradient-to-r from-fuchsia-500 to-indigo-500 px-3 py-1.5 text-xs font-semibold text-white shadow-lg shadow-fuchsia-500/30 transition hover:shadow-fuchsia-500/50">Let’s Talk</a>
       </header>
@@ -22,11 +31,11 @@ function App() {
       <main>
         <Hero />
         <About />
-        <Skills />
         <Projects />
         <Contact />
       </main>
 
+      {/* Footer */}
       <footer className="border-t border-white/10 bg-black/30 py-8 text-center text-white/60">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-wrap items-center justify-center gap-4">
